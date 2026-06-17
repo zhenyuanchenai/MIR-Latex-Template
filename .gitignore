@@ -1,0 +1,20 @@
+# LaTeX build output
+build/
+
+# Common LaTeX intermediates
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.xdv
+
+# Editor and OS noise
+.DS_Store
+Thumbs.db
