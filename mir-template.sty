@@ -96,8 +96,6 @@
   {\thesubsection}{1.15em}{}
 \titlespacing*{\section}{0pt}{6pt}{6pt}
 \titlespacing*{\subsection}{0pt}{6pt}{6pt}
-\pretocmd{\section}{\Needspace{5\baselineskip}}{}{}
-\pretocmd{\subsection}{\Needspace{5\baselineskip}}{}{}
 \renewcommand{\thesection}{\arabic{section}}
 \renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
 \renewcommand{\thetable}{\arabic{table}}
@@ -180,37 +178,11 @@
 }
 
 \RenewEnviron{IEEEbiography}[2][]{%
-  \par
-  \ifcsdef{mir@seenbiography}{%
-    \vspace{\baselineskip}%
-    \def\mir@biographyneedspace{\mirnextbiographyneedspace}%
-  }{%
-    \vspace{\baselineskip}%
-    \global\cslet{mir@seenbiography}\@empty
-    \def\mir@biographyneedspace{\mirfirstbiographyneedspace}%
-  }%
+  \par\vspace{\baselineskip}%
   \begingroup
   \biofont\justifying
   \noindent
-  \ifstrempty{#1}{%
-    \textbf{#2}\ \BODY\par
-  }{%
-    \Needspace{\mir@biographyneedspace}%
-    \expandafter\mir@splitbiography\BODY\par\mir@biographystop
-    \noindent\vbox{%
-      \hsize=\columnwidth
-      \biofont\justifying
-      \noindent
-      \hangindent=\dimexpr\mirauthorphotowidth+\mirauthorphotogap\relax
-      \hangafter=-\mirauthorphotolines
-      \makebox[0pt][r]{%
-        \raisebox{\dimexpr-\height+\ht\strutbox\relax}[0pt][0pt]{#1}%
-        \hspace{\mirauthorphotogap}%
-      }%
-      \textbf{#2} \mir@biographyfirst\par
-    }\par
-    \mir@biographyrest\par
-  }%
+  \textbf{#2}\ \BODY\par
   \endgroup
 }
 \makeatother
