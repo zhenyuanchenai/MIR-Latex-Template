@@ -1,4 +1,4 @@
-﻿# MIR LaTeX Template
+﻿# 📄 MIR LaTeX Template
 
 <p align="center">
   <a href="README.md">简体中文</a>
@@ -10,7 +10,7 @@
 [![XeLaTeX](https://img.shields.io/badge/compiler-XeLaTeX-blue)](https://tug.org/xetex/)
 [![BibTeX](https://img.shields.io/badge/bibliography-BibTeX-lightgrey)](https://www.bibtex.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Status](https://img.shields.io/badge/status-unofficial-orange)](#disclaimer)
+[![Status](https://img.shields.io/badge/status-unofficial-orange)](#-disclaimer)
 
 An unofficial LaTeX template for preparing manuscripts in the style of
 *Machine Intelligence Research* (MIR).
@@ -19,7 +19,7 @@ An unofficial LaTeX template for preparing manuscripts in the style of
 > MIR editorial office or publisher. Always check the latest author instructions
 > before submission.
 
-## Features
+## ✨ Features
 
 - Based on `IEEEtran`, with MIR-specific formatting provided by `mir-template.sty`.
 - Uses standard LaTeX interfaces: `abstract`, `IEEEkeywords`, `figure`, `table`, `equation`, `\cite`, `\bibliography`, and `IEEEbiography`.
@@ -29,7 +29,7 @@ An unofficial LaTeX template for preparing manuscripts in the style of
 - Uses XeLaTeX so the template can use Times New Roman and other system fonts.
 - Writes intermediate files to `build/`; after a successful build, `build/main.pdf` is copied to the project root as `main.pdf` for easy preview.
 
-## Repository Structure
+## 📁 Repository Structure
 
 ```text
 MIR-LaTeX-Template/
@@ -47,9 +47,9 @@ MIR-LaTeX-Template/
 `-- README.en.md         # English README
 ```
 
-## Quick Start
+## 🚀 Quick Start
 
-### Local Build
+### 💻 Local Build
 
 Install a recent TeX distribution such as TeX Live or MiKTeX. This template is
 intended to be compiled with XeLaTeX.
@@ -67,28 +67,28 @@ If the root `main.pdf` cannot be updated, close any PDF viewer or editor tab
 that is locking the file, then compile again. `build/main.pdf` is usually still
 generated correctly.
 
-### Clean Build
+### 🧹 Clean Build
 
 ```powershell
 latexmk -C
 latexmk -xelatex main.tex
 ```
 
-### Overleaf
+### ☁️ Overleaf
 
 Upload the whole project to Overleaf, set the compiler to **XeLaTeX**, and use
 `main.tex` as the main file. Do not use `pdflatex`, because this template relies
 on `fontspec` and system fonts.
 
-### VS Code
+### 🛠️ VS Code
 
 The repository includes `.vscode/settings.json`, which configures a LaTeX
 Workshop recipe named `MIR latexmk (xelatex)`. Open the project in VS Code and
 use that recipe to compile the sample document.
 
-## How to Use
+## 📝 How to Use
 
-### Title, Authors, and Affiliations
+### 👥 Title, Authors, and Affiliations
 
 Edit the title and author information near the top of `main.tex`:
 
@@ -100,7 +100,7 @@ Edit the title and author information near the top of `main.tex`:
 \textsuperscript{2}Department of Academic Journals, Institute of Automation, CAS, Beijing 100190, China}
 ```
 
-### Abstract and Keywords
+### 🔎 Abstract and Keywords
 
 Use the standard environments:
 
@@ -114,7 +114,7 @@ Keyword 1, keyword 2, keyword 3.
 \end{IEEEkeywords}
 ```
 
-### Figures, Tables, and Equations
+### 📊 Figures, Tables, and Equations
 
 Use standard LaTeX environments:
 
@@ -150,7 +150,7 @@ Use `table*` for a table spanning both columns:
 \end{table*}
 ```
 
-### References
+### 📚 References
 
 Add entries to `reference.bib`, cite them with `\cite{...}`, and keep the
 bibliography commands near the end of `main.tex`:
@@ -164,7 +164,7 @@ The template uses the `cite` package, so multiple citations such as
 `\cite{key1,key2,key3}` are compressed and formatted as numeric bracketed
 citations.
 
-### Author Biographies
+### 🧑‍💼 Author Biographies
 
 Use the IEEE-style `IEEEbiography` environment. Author photos should be placed in
 `figures/`.
@@ -177,7 +177,7 @@ Biography text.
 
 The style file formats the biography photo and text wrapping automatically.
 
-## Maintainer Notes
+## 🔧 Maintainer Notes
 
 - `main.tex` should remain a normal LaTeX example and should avoid private layout commands for figures, tables, and equations.
 - `mir-template.sty` contains the visual formatting rules.
@@ -185,7 +185,7 @@ The style file formats the biography photo and text wrapping automatically.
 - `build/` contains generated files and does not need manual editing.
 - If you publish this repository on GitHub, add a root-level `LICENSE` file that matches the license statement below.
 
-## Disclaimer
+## ⚠️ Disclaimer
 
 This is an unofficial template. It is not endorsed by the editorial board of
 *Machine Intelligence Research*, Springer Nature, or any related organization.
@@ -195,7 +195,7 @@ submission requirements or will be accepted for publication.
 Authors are responsible for checking the latest official author guidelines before
 submission.
 
-## License
+## 📜 License
 
 The LaTeX template files and documentation in this repository are intended to be
 released under the MIT License. Before publishing the repository, add a
@@ -205,7 +205,7 @@ This license applies only to the template code and documentation. The copyright
 of any manuscript written with this template belongs to its authors or their
 institutions, subject to any publication agreements they sign.
 
-## Contributing
+## 🤝 Contributing
 
 Issues and pull requests are welcome. Please keep changes focused, avoid adding
 unnecessary dependencies, and verify that the sample document still compiles with
