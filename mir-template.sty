@@ -1,0 +1,277 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mir-template}[2026/06/23 MIR style on IEEEtran]
+
+\RequirePackage[a4paper,left=70.9pt,right=70.9pt,top=72pt,bottom=72pt,headheight=19pt,headsep=18pt,footskip=33pt,columnsep=21.3pt]{geometry}
+\RequirePackage{fontspec}
+\RequirePackage{amsmath,amssymb}
+\RequirePackage{graphicx}
+\RequirePackage{booktabs}
+\RequirePackage{array}
+\RequirePackage{tabularx}
+\RequirePackage{caption}
+\RequirePackage{xcolor}
+\RequirePackage[normalem]{ulem}
+\RequirePackage{cite}
+\RequirePackage{fancyhdr}
+\RequirePackage{titlesec}
+\RequirePackage{needspace}
+\RequirePackage{indentfirst}
+\RequirePackage{ragged2e}
+\RequirePackage{etoolbox}
+\RequirePackage{environ}
+\RequirePackage{float}
+\RequirePackage{flushend}
+\RequirePackage{multicol}
+\RequirePackage[hidelinks]{hyperref}
+\RequirePackage{bookmark}
+
+\Urlmuskip=0mu plus 2mu\relax
+\def\UrlBreaks{\do\/\do-\do\_\do.\do?\do&\do=}
+
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\graphicspath{{figures/}}
+\DeclareMathSizes{9}{8.5}{6}{5}
+
+\setlength{\parindent}{13.7pt}
+\setlength{\parskip}{0pt}
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\emergencystretch=1em
+\hbadness=10000
+\vbadness=10000
+
+\newcommand{\bodyfont}{\fontsize{9pt}{12pt}\selectfont}
+\newcommand{\mircaptionfont}{\fontsize{7.5pt}{9pt}\selectfont}
+\newcommand{\referencefont}{\fontsize{7.5pt}{12pt}\selectfont}
+\newcommand{\biofont}{\fontsize{7.5pt}{9.6pt}\selectfont}
+\newcommand{\mirwrapbiofont}{\fontsize{7.5pt}{9.2pt}\selectfont}
+\newlength{\mirauthorphotowidth}
+\setlength{\mirauthorphotowidth}{81.5pt}
+\newcommand{\mirauthorphotogap}{7pt}
+\newlength{\mirauthorphotowidthsmall}
+\setlength{\mirauthorphotowidthsmall}{81.5pt}
+\newcommand{\mirauthorphotolines}{9}
+\newcommand{\mirwrapphotowidth}{0.23\linewidth}
+\newlength{\mirwrapphotoheight}
+\setlength{\mirwrapphotoheight}{68pt}
+\newcommand{\mirwrapbiolines}{8}
+\newlength{\mirwrapbiosep}
+\setlength{\mirwrapbiosep}{5pt}
+\newcommand{\mirbiolineindent}{1em}
+\newcommand{\mirfirstbiographyneedspace}{18\baselineskip}
+\newcommand{\mirnextbiographyneedspace}{10\baselineskip}
+\newcommand{\mirwidetablewidth}{0.985\textwidth}
+\newcommand{\mirwidetablerowstretch}{1.20}
+\newcommand{\mircolumntablewidth}{\columnwidth}
+\newcommand{\mircolumntablerowstretch}{1.45}
+\newcommand{\samplefigonewidth}{0.795\columnwidth}
+\newcommand{\samplefigtwowidtha}{0.78\columnwidth}
+\newcommand{\samplefigtwowidthb}{0.76\columnwidth}
+\newsavebox{\mirwrapbiobox}
+\newsavebox{\mirbiophotobox}
+
+\newcommand{\miremail}[1]{\begingroup\urlstyle{same}\nolinkurl{#1}\endgroup}
+\newcommand{\mirbioline}[1]{\\\hspace*{\mirbiolineindent}#1}
+\newcommand{\mirbioincludegraphics}[2][]{%
+  \ifstrempty{#1}{%
+    \includegraphics[width=\mirwrapphotowidth,height=\mirwrapphotoheight,keepaspectratio]{#2}%
+  }{%
+    \includegraphics[width=\mirwrapphotowidth,height=\mirwrapphotoheight,keepaspectratio,#1]{#2}%
+  }%
+}
+
+\newcommand{\mirheaderleft}{Machine Intelligence Research}
+\newcommand{\mirheaderright}{F. A. Author et al. / Preparation of Papers for Machine Intelligence Research}
+\newcommand{\mirfootertext}{%
+  \begin{minipage}{\columnwidth}
+    \fontsize{7.5pt}{8.5pt}\selectfont
+    \rule{1.55cm}{0.4pt}\\[-0.5pt]
+    Research Article\\[-1pt]
+    Manuscript received date; accepted date; published online date
+  \end{minipage}}
+
+\fancypagestyle{mirfirst}{%
+  \fancyhf{}
+  \fancyhead[C]{\raisebox{-5pt}{\fontsize{10pt}{11pt}\selectfont\bfseries\mirheaderleft}}
+  \fancyfoot[L]{\raisebox{16pt}{\fontsize{8pt}{10pt}\selectfont\mirfootertext}}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \renewcommand{\headrule}{\hrule width\headwidth height0.4pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+\fancypagestyle{mirmain}{%
+  \fancyhf{}
+  \fancyhead[C]{\raisebox{-8pt}{\fontsize{9pt}{11pt}\selectfont\itshape\ifodd\value{page}\mirheaderright\else\mirheaderleft\fi}}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\headrule}{\ifodd\value{page}\relax\else\hrule width\headwidth height0.4pt \vskip-\headrulewidth\fi}
+  \renewcommand{\footrulewidth}{0pt}
+}
+\pagestyle{mirmain}
+
+\titleformat{\section}
+  {\normalfont\bfseries\fontsize{14pt}{16pt}\selectfont}
+  {\thesection}{0.7em}{}
+\titleformat{name=\section,numberless}
+  {\normalfont\bfseries\fontsize{14pt}{12pt}\selectfont}
+  {}{0pt}{}
+\titleformat{\subsection}
+  {\normalfont\bfseries\fontsize{10.5pt}{12pt}\selectfont}
+  {\thesubsection}{1.15em}{}
+\titlespacing*{\section}{0pt}{6pt}{6pt}
+\titlespacing*{\subsection}{0pt}{6pt}{6pt}
+\pretocmd{\section}{\Needspace{5\baselineskip}}{}{}
+\pretocmd{\subsection}{\Needspace{5\baselineskip}}{}{}
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand{\thetable}{\arabic{table}}
+\def\citedash{-}
+\def\citepunct{, }
+
+\DeclareCaptionFont{mircaption}{\fontsize{7.5pt}{9pt}\selectfont}
+\DeclareCaptionLabelFormat{figlabel}{Fig. #2}
+\DeclareCaptionLabelFormat{mirtable}{Table #2}
+\DeclareCaptionLabelSeparator{mirquad}{\quad}
+\captionsetup{
+  font=mircaption,
+  labelfont=normalfont,
+  textfont=normalfont,
+  justification=justified,
+  singlelinecheck=false
+}
+\captionsetup[figure]{labelformat=figlabel,labelsep=space,aboveskip=2pt,belowskip=1pt}
+\captionsetup[table]{labelformat=mirtable,labelsep=space,position=top,justification=centering,singlelinecheck=false,aboveskip=0pt,belowskip=1pt}
+\setcounter{topnumber}{3}
+\setcounter{dbltopnumber}{2}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\dbltopfraction}{0.9}
+\renewcommand{\textfraction}{0.05}
+\AtBeginEnvironment{table}{\centering\mircaptionfont\renewcommand{\arraystretch}{\mircolumntablerowstretch}}
+\AtBeginEnvironment{table*}{\centering\mircaptionfont\renewcommand{\arraystretch}{\mirwidetablerowstretch}}
+
+\makeatletter
+\newcommand{\mir@abstract}{}
+\newcommand{\mir@keywords}{}
+\newcommand{\mir@affiliations}{}
+\long\def\mir@splitbiography#1\par#2\mir@biographystop{%
+  \long\def\mir@biographyfirst{#1}%
+  \long\def\mir@biographyrest{#2}%
+}
+\newcommand{\mir@wrapbiographycontent}[4]{%
+  \sbox{\mirbiophotobox}{#1}%
+  \setbox\mirwrapbiobox=\vbox{%
+    \hsize=\linewidth
+    \justifying
+    \setlength{\parindent}{0pt}%
+    \setlength{\parskip}{1pt}%
+    \hangindent=\dimexpr\wd\mirbiophotobox+\mirauthorphotogap\relax
+    \hangafter=\numexpr-#4\relax
+    \noindent\makebox[0pt][r]{%
+      \raisebox{\dimexpr-\height+\ht\strutbox\relax}[0pt][0pt]{\usebox{\mirbiophotobox}}%
+      \hspace{\mirauthorphotogap}}%
+    \textbf{#2} #3\par
+  }%
+  \ifdim\ht\mirwrapbiobox<\dimexpr\ht\mirbiophotobox+\dp\mirbiophotobox\relax
+    \vbox to \dimexpr\ht\mirbiophotobox+\dp\mirbiophotobox\relax{\unvbox\mirwrapbiobox\vfil}%
+  \else
+    \box\mirwrapbiobox
+  \fi
+}
+\newcommand{\mirwrapbiography}[4][]{%
+  \par\noindent
+  \begingroup
+  \mirwrapbiofont\justifying
+  \mir@wrapbiographycontent{\mirbioincludegraphics[#1]{#2}}{#3}{#4}{\mirwrapbiolines}%
+  \endgroup
+  \par\vspace{\mirwrapbiosep}%
+}
+\NewEnviron{mirbiography}[3][]{%
+  \mirwrapbiography[#1]{#2}{#3}{\BODY}%
+}
+\newenvironment{mirbiographies}[1][2]{%
+  \clearpage
+  \onecolumn
+  \setlength{\multicolsep}{0pt}%
+  \noindent\begin{multicols}{#1}%
+}{%
+  \end{multicols}%
+}
+\newcommand{\miraffiliation}[1]{\gdef\mir@affiliations{#1}}
+\RenewEnviron{abstract}{\global\let\mir@abstract\BODY}
+\RenewEnviron{IEEEkeywords}{\global\let\mir@keywords\BODY}
+
+\renewcommand{\maketitle}{%
+  \thispagestyle{mirfirst}%
+  \flushbottom
+  \twocolumn[
+  \begin{center}
+    {\bfseries\fontsize{16pt}{18pt}\selectfont \@title\par}
+    \vspace{25pt}
+    {\fontsize{12pt}{14pt}\selectfont \@author\par}
+    \ifstrempty{\mir@affiliations}{}{%
+      \vspace{6pt}
+      {\fontsize{8.5pt}{10.5pt}\selectfont \mir@affiliations\par}%
+    }%
+  \end{center}
+  \vspace{13pt}
+  \noindent{\bodyfont\textbf{Abstract:}\quad \mir@abstract\par}
+  \vspace{10pt}
+  \noindent{\bodyfont\textbf{Keywords:}\quad \mir@keywords\par}
+  \vspace{30pt}
+  ]%
+  \bodyfont\justifying
+}
+
+\renewenvironment{thebibliography}[1]{%
+  \section*{\fontsize{12pt}{12pt}\selectfont References}%
+  \referencefont\justifying
+  \list{\@biblabel{\@arabic\c@enumiv}}{%
+    \settowidth\labelwidth{\@biblabel{#1}}%
+    \leftmargin=0pt
+    \labelwidth=0pt
+    \labelsep=0.35em
+    \itemindent=0pt
+    \itemsep=0pt
+    \parsep=0pt
+    \usecounter{enumiv}%
+    \let\p@enumiv\@empty
+    \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+  \sloppy\clubpenalty4000\widowpenalty4000%
+}{%
+  \def\@noitemerr{\@latex@warning{Empty `thebibliography' environment}}%
+  \endlist
+}
+
+\RenewEnviron{IEEEbiography}[2][]{%
+  \par
+  \ifcsdef{mir@seenbiography}{%
+    \vspace{\baselineskip}%
+    \def\mir@biographyneedspace{\mirnextbiographyneedspace}%
+  }{%
+    \vspace{\baselineskip}%
+    \global\cslet{mir@seenbiography}\@empty
+    \def\mir@biographyneedspace{\mirfirstbiographyneedspace}%
+  }%
+  \begingroup
+  \biofont\justifying
+  \noindent
+  \ifstrempty{#1}{%
+    \textbf{#2}\ \BODY\par
+  }{%
+    \Needspace{\mir@biographyneedspace}%
+    \expandafter\mir@splitbiography\BODY\par\mir@biographystop
+    \mir@wrapbiographycontent{#1}{#2}{\mir@biographyfirst}{\mirauthorphotolines}\par
+    \mir@biographyrest\par
+  }%
+  \endgroup
+}
+\makeatother
+
+\AtBeginDocument{%
+  \bodyfont\justifying
+  \flushbottom
+  \setlength{\abovedisplayskip}{4pt}%
+  \setlength{\belowdisplayskip}{4pt}%
+  \setlength{\abovedisplayshortskip}{2pt}%
+  \setlength{\belowdisplayshortskip}{3pt}%
+}

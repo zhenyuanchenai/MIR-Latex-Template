@@ -1,0 +1,45 @@
+{
+  "latex-workshop.latex.recipe.default": "MIR latexmk (xelatex)",
+  "latex-workshop.latex.outDir": "%DIR%/build",
+  "latex-workshop.latex.rootFile.useSubFile": false,
+  "latex-workshop.latex.build.forceRecipeUsage": true,
+  "latex-workshop.latex.tools": [
+    {
+      "name": "mir-latexmk-xelatex",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-Command",
+        "Set-Location -LiteralPath '%DIR%'; latexmk -xelatex -interaction=nonstopmode -file-line-error -outdir=build '%DOCFILE%.tex'"
+      ]
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "MIR latexmk (xelatex)",
+      "tools": [
+        "mir-latexmk-xelatex"
+      ]
+    }
+  ],
+  "latex-workshop.latex.autoClean.run": "never",
+  "latex-workshop.latex.clean.method": "glob",
+  "latex-workshop.latex.clean.subfolder.enabled": true,
+  "latex-workshop.latex.clean.fileTypes": [
+    "%DOCFILE%.aux",
+    "%DOCFILE%.bbl",
+    "%DOCFILE%.blg",
+    "%DOCFILE%.fdb_latexmk",
+    "%DOCFILE%.fls",
+    "%DOCFILE%.log",
+    "%DOCFILE%.out",
+    "%DOCFILE%.toc",
+    "%DOCFILE%.xdv",
+    "%DOCFILE%.synctex.gz"
+  ],
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.view.pdf.ref.viewer": "tab",
+  "latex-workshop.message.warning.show": false
+}
