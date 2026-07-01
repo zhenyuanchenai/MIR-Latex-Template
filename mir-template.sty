@@ -189,12 +189,10 @@
   \mirwrapbiography[#1]{#2}{#3}{\BODY}%
 }
 \newenvironment{mirbiographies}[1][2]{%
-  \clearpage
-  \onecolumn
-  \setlength{\multicolsep}{0pt}%
-  \noindent\begin{multicols}{#1}%
+  \par\vspace{\baselineskip}%
+  \noindent
 }{%
-  \end{multicols}%
+  \par
 }
 \newcommand{\miraffiliation}[1]{\gdef\mir@affiliations{#1}}
 \RenewEnviron{abstract}{\global\let\mir@abstract\BODY}
